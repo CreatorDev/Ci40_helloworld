@@ -74,9 +74,9 @@ The led_flash binary is now available in
 
 * The IP address is the inet value of the eth0 section of the displayed data
 
-> eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
+>          eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
 
->          inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
+>                    inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
 
 	
 * In this example the IP address is 10.40.5.25
