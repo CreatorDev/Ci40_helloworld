@@ -49,8 +49,8 @@ led_flash is a basic C application written for Openwrt on Creator Ci40, its purp
 	$ make menuconfig
 
 
-	Enter the Utilities section and select the led_flash option
-	Save the config to the default .config filename and exit menuconfig
+Enter the Utilities section and select the led_flash option
+Save the config to the default .config filename and exit menuconfig
 
 10) Build the led_flash application
 
@@ -66,10 +66,20 @@ led_flash is a basic C application written for Openwrt on Creator Ci40, its purp
 	* Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
 
 		$ ifconfig
-	
-On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
 
-_Insert scp instructions to copy led_flash to /bin here_
+	* The IP address is the inet value of the eth0 section of the displayed data
+
+	> eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
+	>          inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
+
+	
+	In this example the IP address is 10.40.5.25
+	
+	On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
+
+		$ scp led_flash root@10.40.5.25:led_flash
+
+	If prompted to accept SSH keys to the Ci40 board answer "yes"
 	
 12) The led_flash application is now ready to run on your Ci40 Openwrt environment
 
