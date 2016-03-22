@@ -1,7 +1,7 @@
 
 ![Creator logo] (creatorlogo.png)
 
-# Using OpenWrt on Creator (Ci40) Marduk platform
+# Building and running a basic application on Creator Ci40 Openwrt
 
 #### For more details about the platform please visit [Creator (Ci40) Marduk](https://community.imgtec.com/platforms/creator-ci40/)
 ----
