@@ -10,13 +10,11 @@
 
 led_flash is a basic C application written for Openwrt on Creator Ci40, its purpose is both to provide a very simple application that will show life of a board and OS as well as providing a skeleton reference environment to build and run a C application on the board. When led_flash is run it will flash the HEARTBEAT LED on and off 10 times.
 
-
 ## Revision History
 
 | revision  | changes from previous revision |
 |---------- |------------------------------- |
 | 1.0.0     | Initial release                |
-
 
 ## Build Instructions
 
@@ -58,16 +56,17 @@ Save the config to the default .config filename and exit menuconfig
 
 	$ make package/led_flash/compile
 
-	The led_flash binary is now available in build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
+The led_flash binary is now available in build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
 
 11)	Copy the led_flash binary to the openwrt ci40 environment. SCP is used to perform the copy in this example but many other methods are available to copy the file
-	Ensure your Ci40 is running Openwrt and that you have a command line terminal open
-	Connect the Ci40 to an ethernet cable on the same domain as your build machine
-	Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
+	* Ensure your Ci40 is running Openwrt and that you have a command line terminal open
+	* Connect the Ci40 to an ethernet cable on the same domain as your build machine
+	* Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
 
 		$ ifconfig
 	
 On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
+_Insert scp instructions here_
 	
 12)	The led_flash application is now ready to run on your Ci40 Openwrt environment
 
