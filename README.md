@@ -8,7 +8,7 @@
 
 ## Overview
 
-Led_flash is a basic C application written for Openwrt on Creator Ci40, its purpose is both to provide a very simple application that will show life of a board and OS as well as providing a skeleton reference environment to build and run a C application on the board
+led_flash is a basic C application written for Openwrt on Creator Ci40, its purpose is both to provide a very simple application that will show life of a board and OS as well as providing a skeleton reference environment to build and run a C application on the board. When led_flash is run it will flash the HEARTBEAT LED on and off 10 times.
 
 
 ## Revision History
@@ -18,7 +18,8 @@ Led_flash is a basic C application written for Openwrt on Creator Ci40, its purp
 | 1.0.0     | Initial release                |
 
 
-Instructions to build and run led_flash on ci40 openwrt
+## Build Instructions
+
 1)	Code is built on the PC that was used to build openwrt for Ci40. The process of building software using a PC environment that is targetted to run on the Ci40 is known as cross compiling. The cross compiling environment is automatically created when you build Openwrt for Ci40 from source code, if Ci40 has been run using pre-built binaries then follow the openwrt.md instructions to build openwrt from source and create the build environment.
 
 2)	From the root of the build environment use the existing package directory
@@ -49,8 +50,9 @@ Instructions to build and run led_flash on ci40 openwrt
 
 	$ make menuconfig
 
-	Enter the Utilities section and select the led_flash option
-	Save the config to the default .config filename and exit menuconfig
+
+Enter the Utilities section and select the led_flash option
+Save the config to the default .config filename and exit menuconfig
 
 10)	Build the led_flash application
 
@@ -65,9 +67,10 @@ Instructions to build and run led_flash on ci40 openwrt
 
 		$ ifconfig
 	
-	On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
+On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
 	
 12)	The led_flash application is now ready to run on your Ci40 Openwrt environment
+
 	$ ./led_flash
 
 
