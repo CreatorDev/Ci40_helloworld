@@ -1,5 +1,5 @@
 ##############################################
-# OpenWrt Makefile for helloworld program
+# OpenWrt Makefile for led_flash program
 #
 ##############################################
 
