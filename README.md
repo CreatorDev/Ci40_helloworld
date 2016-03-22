@@ -59,7 +59,7 @@ Save the config to the default .config filename and exit menuconfig
 
 The led_flash binary is now available in 
 
-	> build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
+> build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
 
 11) Copy the led_flash binary to the openwrt ci40 environment. SCP is used to perform the copy in this example but many other methods are available to copy the file
 
@@ -74,13 +74,14 @@ The led_flash binary is now available in
 
 * The IP address is the inet value of the eth0 section of the displayed data
 
-	> eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
-	>          inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
+> eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
+
+>          inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
 
 	
-In this example the IP address is 10.40.5.25
+* In this example the IP address is 10.40.5.25
 	
-On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
+* On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
 
 		$ scp led_flash root@10.40.5.25:led_flash
 
