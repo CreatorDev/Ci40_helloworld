@@ -56,6 +56,7 @@ Save the config to the default .config filename and exit menuconfig
 
 	$ make package/led_flash/compile
 
+
 	The led_flash binary is now available in 
 
 	> build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
@@ -66,6 +67,7 @@ Save the config to the default .config filename and exit menuconfig
 	* Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
 
 		$ ifconfig
+
 
 	* The IP address is the inet value of the eth0 section of the displayed data
 
@@ -78,6 +80,7 @@ Save the config to the default .config filename and exit menuconfig
 	On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
 
 		$ scp led_flash root@10.40.5.25:led_flash
+
 
 	If prompted to accept SSH keys to the Ci40 board answer "yes"
 	
