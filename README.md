@@ -22,13 +22,17 @@ Instructions to build and run led_flash on ci40 openwrt
 1)	Code is built on the PC that was used to build openwrt for Ci40. The process of building software using a PC environment that is targetted to run on the Ci40 is known as cross compiling. The cross compiling environment is automatically created when you build Openwrt for Ci40 from source code, if Ci40 has been run using pre-built binaries then follow the openwrt.md instructions to build openwrt from source and create the build environment.
 
 2)	From the root of the build environment use the existing package directory
+
 	$ cd package
 
 3)	Create a subdirectory for your project – led_flash in this case
+
 	$ mkdir led_flash
 
 4)	Within led_flash create a src directory
+
 	$ cd led_flash
+
 	$ mkdir src
 
 5)	Place the led_flash Openwrt Makefile in the led_flash directory
@@ -38,21 +42,27 @@ Instructions to build and run led_flash on ci40 openwrt
 7)	Return to the build root directory
 
 8)	Add the led_flash package to the feeds
+
 	$ ./scripts/feeds install led_flash
 
 9)	Select the led_flash package in the menuconfig
+
 	$ make menuconfig
+
 	Enter the Utilities section and select the led_flash option
 	Save the config to the default .config filename and exit menuconfig
 
 10)	Build the led_flash application
+
 	$ make package/led_flash/compile
+
 	The led_flash binary is now available in build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
 
 11)	Copy the led_flash binary to the openwrt ci40 environment. SCP is used to perform the copy in this example but many other methods are available to copy the file
 	Ensure your Ci40 is running Openwrt and that you have a command line terminal open
 	Connect the Ci40 to an ethernet cable on the same domain as your build machine
 	Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
+
 		$ ifconfig
 	
 	On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
