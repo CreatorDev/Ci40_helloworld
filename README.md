@@ -63,29 +63,29 @@ The led_flash binary is now available in
 
 11) Copy the led_flash binary to the openwrt ci40 environment. SCP is used to perform the copy in this example but many other methods are available to copy the file
 
-	* Ensure your Ci40 is running Openwrt and that you have a command line terminal open
+* Ensure your Ci40 is running Openwrt and that you have a command line terminal open
 
-	* Connect the Ci40 to an ethernet cable on the same domain as your build machine
+* Connect the Ci40 to an ethernet cable on the same domain as your build machine
 
-	* Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
+* Use the ifconfig command in Openwrt to view the IP address of your Ci40 board
 
 		$ ifconfig
 
 
-	* The IP address is the inet value of the eth0 section of the displayed data
+* The IP address is the inet value of the eth0 section of the displayed data
 
-```eth0	 Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
-```			 inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
+	> eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
+	>          inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
 
 	
-	In this example the IP address is 10.40.5.25
+In this example the IP address is 10.40.5.25
 	
-	On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
+On the build machine use the linux tool scp to copy the led_flash application to the Ci40 Openwrt environment
 
 		$ scp led_flash root@10.40.5.25:led_flash
 
 
-	If prompted to accept SSH keys to the Ci40 board answer "yes"
+If prompted to accept SSH keys to the Ci40 board answer "yes"
 	
 12) The led_flash application is now ready to run on your Ci40 Openwrt environment
 
