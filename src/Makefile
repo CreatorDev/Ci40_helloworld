@@ -1,10 +1,10 @@
-# build Ci40-LED-flasher executable when user executes "make"
-Ci40-LED-flasher: Ci40-LED-flasher.o
-	$(CC) $(LDFLAGS) Ci40-LED-flasher.o -o Ci40-LED-flasher
-Ci40-LED-flasher.o: Ci40-LED-flasher.c
-	$(CC) $(CFLAGS) -c Ci40-LED-flasher.c
+# build Ci40_helloworld executable when user executes "make"
+Ci40_helloworld: Ci40_helloworld.o
+	$(CC) $(LDFLAGS) Ci40_helloworld.o -o Ci40_helloworld
+Ci40_helloworld.o: Ci40_helloworld.c
+	$(CC) $(CFLAGS) -c Ci40_helloworld.c
 
 # remove object files and executable when user executes "make clean"
 clean:
-	rm *.o Ci40-LED-flasher
+	rm *.o Ci40_helloworld
 
