@@ -1,93 +1,102 @@
 
-![Creator logo] (creatorlogo.png)
+![](creatorlogo.png)
 
 # Building and running a basic application on Creator Ci40 OpenWrt
 
-#### For more details about the platform please visit [Creator (Ci40) Marduk](https://community.imgtec.com/platforms/creator-ci40/)
+#### For more details about the platform please visit the Ci40 [docs.creatordev.io](https://docs.creatordev.io/ci40/) pages
 ----
 
 ## Overview
 
-led_flash is a basic C application written for OpenWrt on Creator Ci40, its purpose is both to provide a very simple application that will show the board and OpenWrt are working, as well as providing a skeleton reference environment to build and run a C application on the board. When led_flash is run it will flash the HEARTBEAT LED on and off 10 times.
+Ci40-LED-flasher is a basic C application written for OpenWrt on Creator Ci40, its purpose is both to provide a very simple application that will show the board and OpenWrt are working, as well as providing a skeleton reference environment to build and run a C application on the board. When Ci40-LED-flasher is run it will flash the HEARTBEAT LED on and off 10 times.
 
 ## Revision History
 
 | revision  | changes from previous revision |
 |---------- |------------------------------- |
+| 1.1.0     | Process updated to use SDK     |
 | 1.0.0     | Initial release                |
 
 ## Build Instructions
 
-1) This project is built on the PC that was used to build openwrt for Ci40 (to build OpenWrt, see the README in the OpenWrt repository [here](https://github.com/FlowM2M/openwrt/blob/master-pistachio/README)). The process of building software using a PC environment that is targetted to run on the Ci40 is known as cross compiling. The cross compiling environment is automatically created when you build OpenWrt for Ci40 from source code.
-
-2) From the root of the build environment use the existing package directory
-
-	$ cd package
-
-3) Create a subdirectory for your project – led_flash in this case
-
-	$ mkdir led_flash
-
-4) Within led_flash create a src directory
-
-	$ cd led_flash
-
-	$ mkdir src
-
-5) Place the led_flash OpenWrt Makefile in the led_flash directory
-
-6) Place the led_flash.c source and the standard c makefile into the src directory
-
-7) Return to the build root directory
-
-8) Add the led_flash package to the feeds
-
-	$ ./scripts/feeds install led_flash
-
-9) Select the led_flash package in the menuconfig
-
-	$ make menuconfig
 
 
-Enter the Utilities section and select the led_flash option
-Save the config to the default .config filename and exit menuconfig
+1. The process detailed below uses the Creator Ci40 OpenWrt SDK on a PC running Ubuntu 16.04.01 LTS. The process of building software using a PC environment that is targetted to run on the Ci40 is known as cross compiling. The cross compiling environment is automatically created when you install the Ci40 OpenWrt SDK
+2. This guide assumes that you will be running in the home directory of your Ubuntu environment, that you're running as a user, and that you have a root password to allow sudo commands to be used.
+3. Ensure you have the necessary packages in place to support the build process
 
-10) Build the led_flash application
+		$ sudo apt-get update
 
-	$ make package/led_flash/compile
+		$ sudo apt-get install build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib flex git-core gettext libssl-dev 
+
+4. Get a copy of the Creator Ci40 OpenWrt SDK from the Creatordev.io download server
+		
+		$ wget https://downloads.creatordev.io/pistachio/marduk/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+5. Extract the SDK on your local machine
+
+		$ tar jxf OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+6.  Create a directory for your development code to live in, we suggest creating a "myfeed" directory in your home environment
+
+		$ mkdir myfeed
+
+7. Use git to ake a copy of the source code and makefiles for the Ci40-LED-flasher application from github into your myfeed directory
+
+		$ cd myfeed
+		$ git clone https://github.com/Creatordev/Ci40-LED-flasher
+
+7.  Move to your OpenWrt SDK directory and update the feeds file to add your new myfeed directory. The commands below make use of vi to edit a text file, if you're not familiar with vi then use your favourite editor.
+
+		$ cd ~/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+		$ vi feeds.conf.default
+Add the line below substituting USERNAME for your Ubuntu username
+
+		$ src-link myfeed /home/USERNAME/myfeed
+Save and exit the feeds.conf.default file
+
+8. Add the Ci40-LED-flasher package to the feeds
+
+		$ ./scripts/feeds install Ci40-LED-flasher
 
 
-The led_flash binary is now available in 
+9. Build the Ci40-LED-flasher application
 
-> build_dir/target-mipsel_mips32_musl-1.1.11/led_flash
-
-11) Copy the led_flash binary to the openWrt ci40 environment. SCP is used to perform the copy in this example but many other methods are available to copy the file
-
-* Ensure your Ci40 is running OpenWrt and that you have a command line terminal open
-
-* Connect the Ci40 to an ethernet cable on the same domain as your build machine
-
-* Use the ifconfig command in OpenWrt to view the IP address of your Ci40 board
-
-		$ ifconfig
+		$ make package/led_flash/compile
 
 
-* The IP address is the inet value of the eth0 section of the displayed data
+	The package is now available as an OpenWrt .ipk file, .ipk files can be installed and managed with the OpenWrt OPKG command. 
 
->          eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
+11. Copy the Ci40-LED-flasher.ipk to the OpenWrt environment running on you Ci40. SCP is used to perform the copy in this example but many other methods are available to copy the file
 
->                    inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
+	* Ensure your Ci40 is running OpenWrt and that you have a command line terminal open
+
+	* Connect the Ci40 to an ethernet cable on the same domain as your build machine
+
+	* In the Ci40 terminal window use OpenWrt's ifconfig command to view the IP address of your Ci40 board
+
+			$ ifconfig
 
 
-* In this example the IP address is 10.40.5.25
+	* The IP address is the inet value of the eth0 section of the displayed data
 
-* On the build machine use the linux tool scp to copy the led_flash application to the Ci40 OpenWrt environment
+	>          eth0      Link encap:Ethernet  HWaddr CE:6A:10:55:72:9D
 
-		$ scp led_flash root@10.40.5.25:led_flash
+	>                    inet addr:10.40.5.25  Bcast:10.40.5.255  Mask:255.255.255.0
 
 
-If prompted to accept SSH keys to the Ci40 board answer "yes"
+	* In this example the IP address is 10.40.5.25
+
+	* On the build machine use the linux tool scp to copy the led_flash application to the Ci40 OpenWrt environment
+
+			$ cd bin/pistachio/packages/myfeed
+			$ scp Ci40-LED-flasher.ipk root@10.40.5.25:Ci40-LED-flasher.ipk
+
+
+	If prompted to accept SSH keys to the Ci40 board answer "yes"
 	
-12) The led_flash application is now ready to run on your Ci40 OpenWrt environment
+12. Install the Ci40-LED-flasher application using opkg
 
-	$ ./led_flash
+		$ opkg install Ci40-LED-flasher.ipk
+
+13. Run the application to view the LED flash on and off 10 times
+
+		$ Ci40-LED-flasher

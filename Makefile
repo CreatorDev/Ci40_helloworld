@@ -1,12 +1,12 @@
 ##############################################
-# OpenWrt Makefile for led_flash program
+# OpenWrt Makefile for Ci40-LED-flasher program
 #
 ##############################################
 
 include $(TOPDIR)/rules.mk
 
 # Name and release number of this package
-PKG_NAME:=led_flash
+PKG_NAME:=Ci40-LED-flasher
 PKG_RELEASE:=1
 
 
@@ -17,14 +17,15 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/led_flash
+define Package/Ci40-LED-flasher
 	SECTION:=utils
 	CATEGORY:=Utilities
 	TITLE:=Flashes the heartbeat LED
-	Package/PKG_NAME/description:=\
-	Simple app to get people started
 endef
 
+define Package/PKG_NAME/description
+	Simple app to get people started
+endef
 
 # Specify what needs to be done to prepare for building the package.
 # In our case, we need to copy the source files to the build directory.
@@ -37,9 +38,9 @@ define Build/Prepare
 	$(CP) ./src/* $(PKG_BUILD_DIR)/
 endef
 
-define Package/led_flash/install
+define Package/Ci40-LED-flasher/install
 	$(INSTALL_DIR) $(1)/bin
-#	$(INSTALL_BIN) $(PKG_BUILD_DIR)/led_flash $(1)/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/Ci40-LED-flasher $(1)/bin/
 endef
 
 
@@ -47,5 +48,5 @@ endef
 # The above define directives specify all the information needed, but this
 # line calls BuildPackage which in turn actually uses this information to
 # build a package.
-$(eval $(call BuildPackage,led_flash))
+$(eval $(call BuildPackage,Ci40-LED-flasher))
 

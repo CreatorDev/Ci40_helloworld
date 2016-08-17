@@ -1,5 +1,5 @@
 /****************
-* led_flash.c
+* Ci40-LED-flasher.c
 * A basic program to flash HEARTBEAT LED (MFIO76) on Ci40 on and off 10 times
 *****************/
 #include <stdio.h>
