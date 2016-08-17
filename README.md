@@ -46,11 +46,11 @@ Ci40-LED-flasher is a basic C application written for OpenWrt on Creator Ci40, i
 
 7.  Move to your OpenWrt SDK directory and update the feeds file to add your new myfeed directory. The commands below make use of vi to edit a text file, if you're not familiar with vi then use your favourite editor.
 
-		$ cd ~/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+		$ cd ~/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64
 		$ vi feeds.conf.default
 Add the line below substituting USERNAME for your Ubuntu username
 
-		$ src-link myfeed /home/USERNAME/myfeed
+		src-link myfeed /home/USERNAME/myfeed
 Save and exit the feeds.conf.default file
 
 8. Add the Ci40-LED-flasher package to the feeds
@@ -60,7 +60,7 @@ Save and exit the feeds.conf.default file
 
 9. Build the Ci40-LED-flasher application
 
-		$ make package/led_flash/compile
+		$ make package/Ci40-LED-flasher/compile
 
 
 	The package is now available as an OpenWrt .ipk file, .ipk files can be installed and managed with the OpenWrt OPKG command. 
@@ -85,7 +85,7 @@ Save and exit the feeds.conf.default file
 
 	* In this example the IP address is 10.40.5.25
 
-	* On the build machine use the linux tool scp to copy the led_flash application to the Ci40 OpenWrt environment
+	* On the build machine use the linux tool scp to copy the Ci40-LED-flasher application to the Ci40 OpenWrt environment
 
 			$ cd bin/pistachio/packages/myfeed
 			$ scp Ci40-LED-flasher.ipk root@10.40.5.25:Ci40-LED-flasher.ipk
