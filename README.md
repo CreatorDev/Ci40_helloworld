@@ -1,14 +1,14 @@
 
 ![](creatorlogo.png)
 
-# Building and running a basic application on Creator Ci40 OpenWrt
+# Cross compiling and installing a basic application on Creator Ci40 OpenWrt
 
 #### For more details about the platform please visit the Ci40 [docs.creatordev.io](https://docs.creatordev.io/ci40/) pages
 ----
 
 ## Overview
 
-Ci40-LED-flasher is a basic C application written for OpenWrt on Creator Ci40, its purpose is both to provide a very simple application that will show the board and OpenWrt are working, as well as providing a skeleton reference environment to build and run a C application on the board. When Ci40-LED-flasher is run it will flash the HEARTBEAT LED on and off 10 times.
+Ci40_helloworld is a basic C application written for OpenWrt on Creator Ci40, its purpose is both to provide a very simple application that will show the board and OpenWrt are working, as well as providing a skeleton reference environment to build and run a C application on the board. When Ci40_helloworld is run it will print a helloworld message 10 times.
 
 ## Revision History
 
@@ -39,10 +39,10 @@ Ci40-LED-flasher is a basic C application written for OpenWrt on Creator Ci40, i
 
 		$ mkdir myfeed
 
-7. Use git to ake a copy of the source code and makefiles for the Ci40-LED-flasher application from github into your myfeed directory
+7. Use git to ake a copy of the source code and makefiles for the Ci40_helloworld application from github into your myfeed directory
 
 		$ cd myfeed
-		$ git clone https://github.com/Creatordev/Ci40-LED-flasher
+		$ git clone https://github.com/Creatordev/Ci40_helloworld
 
 7.  Move to your OpenWrt SDK directory and update the feeds file to add your new myfeed directory. The commands below make use of vi to edit a text file, if you're not familiar with vi then use your favourite editor.
 
@@ -53,20 +53,20 @@ Add the line below substituting USERNAME for your Ubuntu username
 		src-link myfeed /home/USERNAME/myfeed
 Save and exit the feeds.conf.default file
 
-8. Add myfeeds to the OpenWrt feeds list and install the Ci40-LED-flasher package
+8. Add myfeeds to the OpenWrt feeds list and install the Ci40_helloworld package
 
 		$ ./scripts/feeds update myfeed
-		$ ./scripts/feeds install Ci40-LED-flasher
+		$ ./scripts/feeds install Ci40_helloworld
 
 
-9. Build the Ci40-LED-flasher application
+9. Build the Ci40_helloworld application
 
-		$ make package/Ci40-LED-flasher/compile
+		$ make package/Ci40_helloworld/compile
 
 
 	The package is now available as an OpenWrt .ipk file, .ipk files can be installed and managed with the OpenWrt OPKG command. 
 
-11. Copy the Ci40-LED-flasher.ipk to the OpenWrt environment running on you Ci40. SCP is used to perform the copy in this example but many other methods are available to copy the file
+11. Copy the Ci40_helloworld.ipk to the OpenWrt environment running on your Ci40. SCP is used to perform the copy in this example but many other methods are available to copy the file
 
 	* Ensure your Ci40 is running OpenWrt and that you have a command line terminal open
 
@@ -74,7 +74,7 @@ Save and exit the feeds.conf.default file
 
 	* In the Ci40 terminal window use OpenWrt's ifconfig command to view the IP address of your Ci40 board
 
-			$ ifconfig
+		$ ifconfig
 
 
 	* The IP address is the inet value of the eth0 section of the displayed data
@@ -86,18 +86,18 @@ Save and exit the feeds.conf.default file
 
 	* In this example the IP address is 10.40.5.25
 
-	* On the build machine use the linux tool scp to copy the Ci40-LED-flasher application to the Ci40 OpenWrt environment
+	* On the build machine use the linux tool scp to copy the Ci40_helloworld application to the Ci40 OpenWrt environment
 
 			$ cd bin/pistachio/packages/myfeed
-			$ scp Ci40-LED-flasher.ipk root@10.40.5.25:Ci40-LED-flasher.ipk
+			$ scp Ci40_helloworld_1.0.0-1_pistachio.ipk root@10.40.5.25:Ci40_helloworld_1.0.0-1_pistachio.ipk
 
 
 	If prompted to accept SSH keys to the Ci40 board answer "yes"
 	
-12. Install the Ci40-LED-flasher application using opkg
+12. Install the Ci40_helloworld application using opkg
 
-		$ opkg install Ci40-LED-flasher.ipk
+		$ opkg install Ci40_helloworld_1.0.0-1_pistachio.ipk
 
-13. Run the application to view the LED flash on and off 10 times
+13. Run the application to view the helloworld messages
 
-		$ Ci40-LED-flasher
+		$ Ci40_helloworld
