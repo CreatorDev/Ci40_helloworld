@@ -53,8 +53,9 @@ Add the line below substituting USERNAME for your Ubuntu username
 		src-link myfeed /home/USERNAME/myfeed
 Save and exit the feeds.conf.default file
 
-8. Add the Ci40-LED-flasher package to the feeds
+8. Add myfeeds to the OpenWrt feeds list and install the Ci40-LED-flasher package
 
+		$ ./scripts/feeds update myfeed
 		$ ./scripts/feeds install Ci40-LED-flasher
 
 
