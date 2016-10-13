@@ -31,10 +31,10 @@ Ci40_helloworld is a basic C application written for OpenWrt on Creator Ci40, it
 
 4. Get a copy of the Creator Ci40 OpenWrt SDK from the Creatordev.io download server
 		
-		$ wget https://downloads.creatordev.io/pistachio/marduk/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+		$ wget https://downloads.creatordev.io/pistachio/marduk/OpenWrt-SDK-0.10.4-pistachio-marduk_gcc-5.3.0_musl-1.1.14.Linux-x86_64.tar.bz2
 5. Extract the SDK on your local machine
 
-		$ tar jxf OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64.tar.bz2
+		$ tar jxf OpenWrt-SDK-0.10.4-pistachio-marduk_gcc-5.3.0_musl-1.1.14.Linux-x86_64.tar.bz2
 6.  Create a directory for your development code to live in, we suggest creating a "myfeed" directory in your home environment
 
 		$ mkdir myfeed
@@ -46,7 +46,7 @@ Ci40_helloworld is a basic C application written for OpenWrt on Creator Ci40, it
 
 7.  Move to your OpenWrt SDK directory and update the feeds file to add your new myfeed directory. The commands below make use of vi to edit a text file, if you're not familiar with vi then use your favourite editor.
 
-		$ cd ~/OpenWrt-SDK-0.9.4-pistachio-marduk_gcc-5.2.0_musl-1.1.11.Linux-x86_64
+		$ cd ~/OpenWrt-SDK-0.10.4-pistachio-marduk_gcc-5.3.0_musl-1.1.14.Linux-x86_64.tar.bz2
 		$ vi feeds.conf.default
 Add the line below substituting USERNAME for your Ubuntu username
 
