@@ -53,18 +53,17 @@ Add the line below substituting USERNAME for your Ubuntu username
 		src-link myfeed /home/USERNAME/myfeed
 Save and exit the feeds.conf.default file
 
-8. Add myfeeds to the OpenWrt feeds list and install the Ci40_helloworld package
+8. Update and install the feeds:
 
-		$ ./scripts/feeds update myfeed
-		$ ./scripts/feeds install Ci40_helloworld
-
+		$ ./scripts/feeds update -a && ./scripts/feeds install -a
 
 9. Build the Ci40_helloworld application
 
+		$ make package/toolchain/compile
 		$ make package/Ci40_helloworld/compile
 
 
-	The package is now available as an OpenWrt .ipk file, .ipk files can be installed and managed with the OpenWrt OPKG command. 
+	The package is now available as an OpenWrt .ipk file in the bin folder; .ipk files can be installed and managed with the OpenWrt OPKG command. 
 
 11. Copy the Ci40_helloworld.ipk to the OpenWrt environment running on your Ci40. SCP is used to perform the copy in this example but many other methods are available to copy the file
 
